@@ -1,6 +1,8 @@
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import { Link } from 'react-router-dom';
+import Nav from 'react-bootstrap/Nav';
 
 function LoginSample() {
   return (
@@ -22,6 +24,10 @@ function LoginSample() {
           <Form.Control type="password" placeholder="Password" />
         </Col>
       </Form.Group>
+
+       <Nav.Link as={Link} to="/register">
+          Register
+        </Nav.Link>
     </Form>
   );
 }

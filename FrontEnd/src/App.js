@@ -3,16 +3,19 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import MiNavbar from './components/Navbar';
 import LoginSample from './pages/Login';
+import NuevoRegistro from'./pages/Register';
 import './App.css';
 
 
 function App() {
   const [data, setData] = useState([]);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/usuarios');
+      const response = await fetch(`${API_URL}/api/usuarios`);
+
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -36,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<main>Contenido principal</main>} />
         <Route path="/login" element={<LoginSample />}/>
+        <Route path="/register" element={<NuevoRegistro/>} />
       </Routes>
     </BrowserRouter>
 

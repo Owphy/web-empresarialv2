@@ -3,7 +3,6 @@
 *.class
 
 # Maven wrapper
-# No ignores maven-wrapper.jar si deseas versionarlo
 
 # Frontend - Node
 **/node_modules/

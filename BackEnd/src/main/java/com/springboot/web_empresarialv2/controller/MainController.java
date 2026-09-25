@@ -49,6 +49,7 @@ public class MainController {
         UsuarioDTO creado = usuarioService.registrar(nuevoUsuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
     }
+
     
     @PatchMapping("/{id}")
     public ResponseEntity<UsuarioDTO> actualizar(

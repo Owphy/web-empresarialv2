@@ -45,7 +45,4 @@ public class Usuario {
     protected void onCreate() {
         fechaRegistro = LocalDateTime.now();
     }
-    
-
-
 }

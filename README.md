@@ -46,9 +46,9 @@ BackEnd/src/main/resources/application.properties
 Ejemplo:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/webv2?useSSL=false&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=TU_CONTRASEÑA
+spring.datasource.url=jdbc:
+spring.datasource.username=
+spring.datasource.password=
 ```
 
 ## Ejecutar el backend

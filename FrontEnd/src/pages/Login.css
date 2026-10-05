@@ -1,0 +1,164 @@
+/* ===== INICIO: Variables de color (misma paleta que el registro) ===== */
+.login-fondo {
+    --log-marino-oscuro: #0f1c2e;
+    --log-marino: #1b2a41;
+    --log-pizarra: #324a5f;
+    --log-gris-azulado: #8a9bae;
+    --log-marfil: #f4f1ea;
+    --log-dorado: #b8975a;
+    --log-dorado-oscuro: #9c7d45;
+}
+/* ===== FIN: Variables de color ===== */
+
+/* ===== INICIO: Fondo de la página ===== */
+.login-fondo {
+    min-height: calc(100vh - 56px); /* 56px = alto del Navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background:
+        linear-gradient(135deg, rgba(184, 151, 90, 0.10) 0%, transparent 40%),
+        linear-gradient(160deg, var(--log-marino-oscuro) 0%, var(--log-marino) 45%, var(--log-pizarra) 100%);
+}
+/* ===== FIN: Fondo de la página ===== */
+
+/* ===== INICIO: Contenedor central (bordes rectos) ===== */
+.login-contenedor {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--log-marfil);
+    border: 1px solid var(--log-pizarra);
+    border-top: 4px solid var(--log-dorado);
+    border-radius: 0;
+    padding: 36px 40px;
+    box-shadow:
+        0 0 0 6px rgba(50, 74, 95, 0.45),   /* marco exterior en tono del fondo */
+        0 20px 40px rgba(0, 0, 0, 0.45);
+}
+/* ===== FIN: Contenedor central ===== */
+
+/* ===== INICIO: Encabezado ===== */
+.login-encabezado {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--log-gris-azulado);
+}
+
+.login-titulo {
+    color: var(--log-marino);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.login-subtitulo {
+    color: var(--log-pizarra);
+    font-size: 0.95rem;
+    margin: 0;
+}
+/* ===== FIN: Encabezado ===== */
+
+/* ===== INICIO: Etiquetas y campos ===== */
+.login-label {
+    color: var(--log-marino);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.login-input.form-control {
+    border-radius: 0;
+    border: 1px solid var(--log-gris-azulado);
+    background-color: #ffffff;
+    color: var(--log-marino-oscuro);
+}
+
+.login-input.form-control:focus {
+    border-color: var(--log-dorado);
+    box-shadow: 0 0 0 2px rgba(184, 151, 90, 0.25);
+}
+/* ===== FIN: Etiquetas y campos ===== */
+
+/* ===== INICIO: Campo de contraseña con botón mostrar/ocultar ===== */
+.login-password {
+    position: relative;
+}
+
+.login-password .login-input.form-control {
+    padding-right: 80px;
+}
+
+.login-ver {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 14px;
+    border: 0;
+    border-left: 1px solid var(--log-gris-azulado);
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--log-pizarra);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.login-ver:hover,
+.login-ver:focus-visible {
+    color: var(--log-dorado-oscuro);
+}
+/* ===== FIN: Campo de contraseña con botón mostrar/ocultar ===== */
+
+/* ===== INICIO: Botón de envío ===== */
+.login-boton.btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid var(--log-marino-oscuro);
+    background-color: var(--log-marino);
+    color: var(--log-marfil);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.login-boton.btn:hover,
+.login-boton.btn:focus {
+    background-color: var(--log-dorado-oscuro);
+    border-color: var(--log-dorado-oscuro);
+    color: #ffffff;
+}
+/* ===== FIN: Botón de envío ===== */
+
+/* ===== INICIO: Pie con enlace a registro ===== */
+.login-pie {
+    text-align: center;
+    margin: 20px 0 0;
+    color: var(--log-pizarra);
+    font-size: 0.9rem;
+}
+
+.login-enlace {
+    color: var(--log-dorado-oscuro);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-enlace:hover {
+    text-decoration: underline;
+}
+/* ===== FIN: Pie con enlace a registro ===== */
+
+/* ===== INICIO: Ajustes para pantallas pequeñas ===== */
+@media (max-width: 576px) {
+    .login-contenedor {
+        padding: 28px 20px;
+    }
+}
+/* ===== FIN: Ajustes para pantallas pequeñas ===== */

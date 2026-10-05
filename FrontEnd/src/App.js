@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import MiNavbar from './components/Navbar';
 import LoginSample from './pages/Login';
 import NuevoRegistro from'./pages/Register';
+import Inicio from './pages/Home';
 import './App.css';
 
 
@@ -37,7 +38,7 @@ function App() {
       <MiNavbar />
 
       <Routes>
-        <Route path="/" element={<main>Contenido principal</main>} />
+        <Route path="/" element={<Inicio />} />
         <Route path="/login" element={<LoginSample />}/>
         <Route path="/register" element={<NuevoRegistro/>} />
       </Routes>

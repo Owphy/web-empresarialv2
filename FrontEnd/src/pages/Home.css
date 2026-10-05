@@ -1,0 +1,459 @@
+/* ===== INICIO: Variables de color (misma paleta que el registro) ===== */
+.inicio-pagina {
+    --ini-marino-oscuro: #0f1c2e;
+    --ini-marino: #1b2a41;
+    --ini-pizarra: #324a5f;
+    --ini-gris-azulado: #8a9bae;
+    --ini-marfil: #f4f1ea;
+    --ini-dorado: #b8975a;
+    --ini-dorado-oscuro: #9c7d45;
+
+    background-color: var(--ini-marfil);
+    color: var(--ini-marino-oscuro);
+}
+/* ===== FIN: Variables de color ===== */
+
+/* ===== INICIO: Contenedor general ===== */
+.inicio-contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+/* ===== FIN: Contenedor general ===== */
+
+/* ===== INICIO: Sección principal (contenedor del carrusel) ===== */
+.inicio-hero {
+    position: relative;
+    height: calc(100vh - 56px); /* 56px = alto del Navbar */
+    min-height: 520px;
+    overflow: hidden;
+    background-color: var(--ini-marino-oscuro);
+}
+
+.inicio-carrusel,
+.inicio-carrusel .carousel-inner,
+.inicio-slide {
+    height: 100%;
+}
+/* ===== FIN: Sección principal (contenedor del carrusel) ===== */
+
+/* ===== INICIO: Imagen de cada diapositiva (zoom lento) ===== */
+.inicio-slide {
+    position: relative;
+}
+
+.inicio-slide-imagen {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1);
+}
+
+.inicio-slide.active .inicio-slide-imagen {
+    animation: inicio-zoom 8s ease-out forwards;
+}
+
+@keyframes inicio-zoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.08); }
+}
+/* ===== FIN: Imagen de cada diapositiva ===== */
+
+/* ===== INICIO: Capa de color sobre la imagen (mantiene la paleta) ===== */
+.inicio-slide-capa {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(184, 151, 90, 0.18) 0%, transparent 45%),
+        linear-gradient(160deg, rgba(15, 28, 46, 0.88) 0%, rgba(27, 42, 65, 0.72) 50%, rgba(50, 74, 95, 0.80) 100%);
+}
+/* ===== FIN: Capa de color sobre la imagen ===== */
+
+/* ===== INICIO: Texto centrado de la diapositiva ===== */
+.inicio-slide-contenido {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 72px;
+    text-align: center;
+}
+
+.inicio-hero-contenido {
+    max-width: 720px;
+    padding: 48px 40px;
+    border: 1px solid rgba(138, 155, 174, 0.45);
+    border-top: 4px solid var(--ini-dorado);
+    border-radius: 0;
+    background-color: rgba(15, 28, 46, 0.55);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Cada elemento del texto entra en secuencia al activarse la diapositiva */
+.inicio-slide .inicio-etiqueta,
+.inicio-slide .inicio-titulo,
+.inicio-slide .inicio-descripcion,
+.inicio-slide .inicio-acciones {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.inicio-slide.active .inicio-etiqueta,
+.inicio-slide.active .inicio-titulo,
+.inicio-slide.active .inicio-descripcion,
+.inicio-slide.active .inicio-acciones {
+    animation: inicio-subir 0.8s ease-out forwards;
+}
+
+.inicio-slide.active .inicio-etiqueta    { animation-delay: 0.2s; }
+.inicio-slide.active .inicio-titulo      { animation-delay: 0.35s; }
+.inicio-slide.active .inicio-descripcion { animation-delay: 0.5s; }
+.inicio-slide.active .inicio-acciones    { animation-delay: 0.65s; }
+
+@keyframes inicio-subir {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inicio-etiqueta {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: var(--ini-dorado);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.inicio-titulo {
+    color: var(--ini-marfil);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.inicio-descripcion {
+    color: #c3ccd6;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+}
+/* ===== FIN: Texto centrado de la diapositiva ===== */
+
+/* ===== INICIO: Controles del carrusel (indicadores y flechas rectas) ===== */
+.inicio-carrusel .carousel-indicators {
+    z-index: 3;
+    margin-bottom: 28px;
+}
+
+.inicio-carrusel .carousel-indicators [data-bs-target] {
+    width: 36px;
+    height: 3px;
+    border: 0;
+    border-radius: 0;
+    background-color: var(--ini-marfil);
+    opacity: 0.4;
+    transition: opacity 0.3s, width 0.3s, background-color 0.3s;
+}
+
+.inicio-carrusel .carousel-indicators .active {
+    width: 56px;
+    background-color: var(--ini-dorado);
+    opacity: 1;
+}
+
+.inicio-carrusel .carousel-control-prev,
+.inicio-carrusel .carousel-control-next {
+    z-index: 3;
+    width: 64px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.inicio-hero:hover .carousel-control-prev,
+.inicio-hero:hover .carousel-control-next,
+.inicio-carrusel .carousel-control-prev:focus-visible,
+.inicio-carrusel .carousel-control-next:focus-visible {
+    opacity: 0.8;
+}
+
+.inicio-carrusel .carousel-control-prev-icon,
+.inicio-carrusel .carousel-control-next-icon {
+    width: 44px;
+    height: 44px;
+    background-size: 40%;
+    border: 1px solid rgba(244, 241, 234, 0.6);
+    background-color: rgba(15, 28, 46, 0.45);
+}
+/* ===== FIN: Controles del carrusel ===== */
+
+/* ===== INICIO: Indicador para desplazarse hacia abajo ===== */
+.inicio-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 64px;
+    z-index: 3;
+    width: 2px;
+    height: 36px;
+    transform: translateX(-50%);
+    background-color: rgba(244, 241, 234, 0.25);
+    overflow: hidden;
+}
+
+.inicio-scroll span {
+    position: absolute;
+    left: 0;
+    top: -36px;
+    width: 100%;
+    height: 36px;
+    background-color: var(--ini-dorado);
+    animation: inicio-linea 2.2s ease-in-out infinite;
+}
+
+@keyframes inicio-linea {
+    0%   { top: -36px; }
+    60%  { top: 36px; }
+    100% { top: 36px; }
+}
+/* ===== FIN: Indicador para desplazarse hacia abajo ===== */
+
+/* ===== INICIO: Animación de aparición al hacer scroll ===== */
+.revelar {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.revelar-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ===== FIN: Animación de aparición al hacer scroll ===== */
+
+/* ===== INICIO: Botones de acción ===== */
+.inicio-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.inicio-boton {
+    display: inline-block;
+    min-width: 180px;
+    padding: 12px 24px;
+    border-radius: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.inicio-boton-principal {
+    background-color: var(--ini-dorado);
+    border: 1px solid var(--ini-dorado);
+    color: var(--ini-marino-oscuro);
+}
+
+.inicio-boton-principal:hover {
+    background-color: var(--ini-dorado-oscuro);
+    border-color: var(--ini-dorado-oscuro);
+    color: #ffffff;
+}
+
+.inicio-boton-secundario {
+    background-color: transparent;
+    border: 1px solid var(--ini-marfil);
+    color: var(--ini-marfil);
+}
+
+.inicio-boton-secundario:hover {
+    background-color: var(--ini-marfil);
+    color: var(--ini-marino);
+}
+/* ===== FIN: Botones de acción ===== */
+
+/* ===== INICIO: Sección de servicios ===== */
+.inicio-servicios {
+    padding: 80px 0;
+}
+
+.inicio-seccion-encabezado {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.inicio-seccion-titulo {
+    color: var(--ini-marino);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.inicio-seccion-titulo::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 12px auto 0;
+    background-color: var(--ini-dorado);
+}
+
+.inicio-seccion-subtitulo {
+    color: var(--ini-pizarra);
+    margin: 0;
+}
+/* ===== FIN: Sección de servicios ===== */
+
+/* ===== INICIO: Tarjetas de servicios ===== */
+.inicio-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.inicio-tarjeta {
+    height: 100%;
+    padding: 32px 28px;
+    background-color: #ffffff;
+    border: 1px solid var(--ini-gris-azulado);
+    border-left: 4px solid var(--ini-marino);
+    border-radius: 0;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.inicio-tarjeta:hover {
+    border-left-color: var(--ini-dorado);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(15, 28, 46, 0.15);
+}
+
+.inicio-tarjeta-numero {
+    display: block;
+    color: var(--ini-dorado);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.inicio-tarjeta-titulo {
+    color: var(--ini-marino);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.inicio-tarjeta-texto {
+    color: var(--ini-pizarra);
+    margin: 0;
+}
+/* ===== FIN: Tarjetas de servicios ===== */
+
+/* ===== INICIO: Banda de cifras ===== */
+.inicio-cifras {
+    padding: 56px 0;
+    background: linear-gradient(90deg, var(--ini-marino-oscuro), var(--ini-pizarra));
+    border-top: 4px solid var(--ini-dorado);
+}
+
+.inicio-cifras-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+}
+
+.inicio-cifra-valor {
+    display: block;
+    color: var(--ini-dorado);
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.inicio-cifra-etiqueta {
+    color: var(--ini-marfil);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+/* ===== FIN: Banda de cifras ===== */
+
+/* ===== INICIO: Pie de página ===== */
+.inicio-pie {
+    padding: 24px 16px;
+    text-align: center;
+    background-color: var(--ini-marino-oscuro);
+    color: var(--ini-gris-azulado);
+    font-size: 0.85rem;
+}
+
+.inicio-pie p {
+    margin: 0;
+}
+/* ===== FIN: Pie de página ===== */
+
+/* ===== INICIO: Desplazamiento suave hacia las secciones ===== */
+html {
+    scroll-behavior: smooth;
+}
+/* ===== FIN: Desplazamiento suave ===== */
+
+/* ===== INICIO: Ajustes para pantallas pequeñas ===== */
+@media (max-width: 768px) {
+    .inicio-cifras-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .inicio-hero-contenido {
+        padding: 32px 20px;
+    }
+
+    .inicio-slide-contenido {
+        padding: 40px 16px 80px;
+    }
+
+    .inicio-scroll {
+        display: none;
+    }
+
+    .inicio-boton {
+        width: 100%;
+    }
+}
+/* ===== FIN: Ajustes para pantallas pequeñas ===== */
+
+/* ===== INICIO: Respeto a la preferencia de "movimiento reducido" ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .inicio-slide.active .inicio-slide-imagen,
+    .inicio-scroll span {
+        animation: none;
+    }
+
+    .inicio-slide .inicio-etiqueta,
+    .inicio-slide .inicio-titulo,
+    .inicio-slide .inicio-descripcion,
+    .inicio-slide .inicio-acciones {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
+
+    .revelar {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+/* ===== FIN: Respeto a la preferencia de "movimiento reducido" ===== */

@@ -16,6 +16,7 @@ import com.springboot.web_empresarialv2.dto.UsuarioRolDTO;
 import com.springboot.web_empresarialv2.dto.UsuarioUpdateDTO;
 import com.springboot.web_empresarialv2.repository.RolRepository;
 import com.springboot.web_empresarialv2.repository.UsuarioRepository;
+import com.springboot.web_empresarialv2.dto.UsuarioLoginDTO;
 
 @Service
 public class UsuarioService {
@@ -32,7 +33,19 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;  
     }
 
+    public UsuarioDTO login(UsuarioLoginDTO loginDTO){
+        Usuario usuario = usuarioRepository.findByCorreo(loginDTO.getCorreo())
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
+        if(!passwordEncoder.matches(loginDTO.getPassword(), usuario.getPassword())){
+            throw new IllegalArgumentException("Contraseña incorrecta");
+        }
+        return toDTO(usuario);
+    }
+
     public UsuarioDTO registrar(UsuarioRegistroDTO nuevoUsuario){
+        if(!Objects.equals(nuevoUsuario.getPassword(), nuevoUsuario.getConfirmPassword())){
+            throw new IllegalArgumentException("Las contraseñas no coinciden");
+        }
         if(usuarioRepository.existsByCorreo(nuevoUsuario.getCorreo())){
             throw new IllegalArgumentException("El correo ya está registrado");
         }

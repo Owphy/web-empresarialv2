@@ -1,0 +1,145 @@
+/* ===== INICIO: Variables de color (paleta formal) ===== */
+:root {
+    --reg-marino-oscuro: #0f1c2e;
+    --reg-marino: #1b2a41;
+    --reg-pizarra: #324a5f;
+    --reg-gris-azulado: #8a9bae;
+    --reg-marfil: #f4f1ea;
+    --reg-dorado: #b8975a;
+    --reg-dorado-oscuro: #9c7d45;
+}
+/* ===== FIN: Variables de color ===== */
+
+/* ===== INICIO: Fondo de la página ===== */
+.registro-fondo {
+    min-height: calc(100vh - 56px); /* 56px = alto del Navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    background:
+        linear-gradient(135deg, rgba(184, 151, 90, 0.10) 0%, transparent 40%),
+        linear-gradient(160deg, var(--reg-marino-oscuro) 0%, var(--reg-marino) 45%, var(--reg-pizarra) 100%);
+}
+/* ===== FIN: Fondo de la página ===== */
+
+/* ===== INICIO: Contenedor central (bordes rectos) ===== */
+.registro-contenedor {
+    width: 100%;
+    max-width: 520px;
+    background-color: var(--reg-marfil);
+    border: 1px solid var(--reg-pizarra);
+    border-top: 4px solid var(--reg-dorado);
+    border-radius: 0;
+    padding: 36px 40px;
+    box-shadow:
+        0 0 0 6px rgba(50, 74, 95, 0.45),   /* marco exterior en tono del fondo */
+        0 20px 40px rgba(0, 0, 0, 0.45);
+}
+/* ===== FIN: Contenedor central ===== */
+
+/* ===== INICIO: Encabezado ===== */
+.registro-encabezado {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--reg-gris-azulado);
+}
+
+.registro-titulo {
+    color: var(--reg-marino);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.registro-subtitulo {
+    color: var(--reg-pizarra);
+    font-size: 0.95rem;
+    margin: 0;
+}
+/* ===== FIN: Encabezado ===== */
+
+/* ===== INICIO: Etiquetas y campos ===== */
+.registro-label {
+    color: var(--reg-marino);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.registro-input.form-control {
+    border-radius: 0;
+    border: 1px solid var(--reg-gris-azulado);
+    background-color: #ffffff;
+    color: var(--reg-marino-oscuro);
+}
+
+.registro-input.form-control:focus {
+    border-color: var(--reg-dorado);
+    box-shadow: 0 0 0 2px rgba(184, 151, 90, 0.25);
+}
+/* ===== FIN: Etiquetas y campos ===== */
+
+/* ===== INICIO: Fila de contraseñas en dos columnas ===== */
+.registro-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+/* ===== FIN: Fila de contraseñas ===== */
+
+/* ===== INICIO: Botón de envío ===== */
+.registro-boton.btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid var(--reg-marino-oscuro);
+    background-color: var(--reg-marino);
+    color: var(--reg-marfil);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.registro-boton.btn:hover,
+.registro-boton.btn:focus {
+    background-color: var(--reg-dorado-oscuro);
+    border-color: var(--reg-dorado-oscuro);
+    color: #ffffff;
+}
+/* ===== FIN: Botón de envío ===== */
+
+/* ===== INICIO: Pie con enlace a login ===== */
+.registro-pie {
+    text-align: center;
+    margin: 20px 0 0;
+    color: var(--reg-pizarra);
+    font-size: 0.9rem;
+}
+
+.registro-enlace {
+    color: var(--reg-dorado-oscuro);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.registro-enlace:hover {
+    text-decoration: underline;
+}
+/* ===== FIN: Pie con enlace a login ===== */
+
+/* ===== INICIO: Ajustes para pantallas pequeñas ===== */
+@media (max-width: 576px) {
+    .registro-contenedor {
+        padding: 28px 20px;
+    }
+
+    .registro-fila {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+/* ===== FIN: Ajustes para pantallas pequeñas ===== */

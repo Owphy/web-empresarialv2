@@ -3,6 +3,12 @@ package com.springboot.web_empresarialv2.config;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.springboot.web_empresarialv2.model.Usuario;
+
 public class UsuarioPrincial implements UserDetails {
     private final Usuario usuario;
 
@@ -15,12 +21,12 @@ public class UsuarioPrincial implements UserDetails {
     }
      @Override 
      public String getPassword(){
-        return usuario.getPassword;
+        return usuario.getPassword();
      }
      @Override 
      public Collection<? extends GrantedAuthority> getAuthorities(){
         return List.of(
-            new SimpleGrantedAuthoirty("ROLE_" + usuario.getRol().getNombre())
+            new SimpleGrantedAuthority("ROLE_" + usuario.getRol().getNombre())
         );
      }
      @Override

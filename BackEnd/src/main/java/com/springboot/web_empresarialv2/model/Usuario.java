@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -29,7 +29,7 @@ public class Usuario {
     private String correo;
 
     @Column(nullable = false, length = 100)
-    private String password; //BCrypt
+    private String password; //BCrypt 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "rol_id", nullable = false)

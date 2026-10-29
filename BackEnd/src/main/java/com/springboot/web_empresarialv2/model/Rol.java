@@ -16,11 +16,11 @@ import lombok.Setter;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false, unique = true, length = 30)
     private String nombre;
 
     @Column(nullable = false)
-    private Integer nivel;
+    private Long nivel;
 }

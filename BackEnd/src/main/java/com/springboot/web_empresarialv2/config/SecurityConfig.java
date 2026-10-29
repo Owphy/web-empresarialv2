@@ -1,5 +1,6 @@
 package com.springboot.web_empresarialv2.config;
 
+import java.beans.BeanProperty;
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,16 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    
+    @Bean
+    public authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    SecurityFilterChain securityContextRepository(){
+        return new HttpSessionSecurityContextRepository();
+    }
 
 
     @Bean
@@ -27,6 +38,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(List.of("*"));
 
         UrlBasedCorsConfigurationSource source =
@@ -46,10 +58,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated()
-            );
-
-        
+                .anyRequest().authenticated())
+            .exceptionHandling(e -> e.authenticationEntryPoint(
+                new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+            .logout(logout -> logout
+                .logoutUrl("/api/auth/logout")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));  
         return http.build();
 
     }

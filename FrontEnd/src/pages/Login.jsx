@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function LoginSample() {
     const API_URL = process.env.REACT_APP_API_URL;
+    const navigate = useNavigate();
 
     /* Estado del formulario */
     const [formulario, setFormulario] = useState({
@@ -41,6 +42,8 @@ function LoginSample() {
                 throw new Error(`HTTP ${response.status}`);
             }
             alert('Inicio de sesión correcto');
+
+            navigate('/home');
 
         } catch (error) {
             console.error('Error al iniciar sesión:', error);

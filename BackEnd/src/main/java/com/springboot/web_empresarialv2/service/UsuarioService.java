@@ -35,9 +35,9 @@ public class UsuarioService {
 
     public UsuarioDTO login(UsuarioLoginDTO loginDTO){
         Usuario usuario = usuarioRepository.findByCorreo(loginDTO.getCorreo())
-                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
+                .orElseThrow(() -> new IllegalArgumentException("Credenciales Invalidas"));
         if(!passwordEncoder.matches(loginDTO.getPassword(), usuario.getPassword())){
-            throw new IllegalArgumentException("Contraseña incorrecta");
+            throw new IllegalArgumentException("Credenciales Invalidas");
         }
         return toDTO(usuario);
     }

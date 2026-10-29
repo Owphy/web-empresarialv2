@@ -14,6 +14,7 @@ import com.springboot.web_empresarialv2.dto.UsuarioLoginDTO;
 import com.springboot.web_empresarialv2.dto.UsuarioRegistroDTO;
 import com.springboot.web_empresarialv2.service.UsuarioService;
 import com.springboot.web_empresarialv2.dto.UsuarioLoginDTO;
+import org.junit.jupiter.api.Test;
 
 import jakarta.validation.Valid;
 
@@ -25,7 +26,7 @@ public class AuthController {
     public AuthController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
-    
+
     @PostMapping("/registrar")
     public ResponseEntity<UsuarioDTO> registrar(@Valid @RequestBody UsuarioRegistroDTO registroDTO){
         UsuarioDTO usuario = usuarioService.registrar(registroDTO);

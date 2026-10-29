@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 
 function NuevoRegistro(){
     const API_URL = process.env.REACT_APP_API_URL;
+    const navigate = useNavigate();
 
     const [formulario, setFormulario] = useState({
         nickname:'',
@@ -51,6 +52,7 @@ function NuevoRegistro(){
                     confirmPassword:'',
                 });
 
+                navigate('/login');
             
             }catch(error){
                 console.error('Error al registrar usuario:', error);

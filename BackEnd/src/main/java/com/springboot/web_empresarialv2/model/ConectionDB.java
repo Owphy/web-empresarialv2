@@ -4,9 +4,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConectionDB {
-    private String URL = "mysql://localhost:3306/webv2?useSSL=false&serverTimezone=UTC";
-    private String username = "root";
-    private String password = "MySQL";
+    private String URL = "";
+    private String username = "";
+    private String password = "";
 
     private Connection connection;
 
